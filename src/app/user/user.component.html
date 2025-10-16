@@ -1,0 +1,44 @@
+
+<table class="table table-bordered table-striped table-hover">
+   
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of arr; let i = index">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.phone}}</td>
+        <td>
+            <button (click)="editUser(item)" class="btn btn-primary">Edit </button>
+          <button (click)="deleteUser(item.id)" class="btni btn-primary">Delete </button>
+        </td>
+      </tr>
+<data value=""></data>      
+    </tbody>
+
+  </table>
+  <div>
+    <input  type="text" [(ngModel)]="newUser.name"  placeholder="Name"  required/>
+    </div>
+    <div>
+    <input type="text" [(ngModel)]="newUser.address" placeholder="Address" required/>
+    <input type="number" [(ngModel)]="newUser.phone" placeholder="Phone" required=""/>
+
+    <button (click)="Adduser()" class="btn btn-primary">Add </button>
+</div>
+<div *ngIf="isEditing">
+    <h3>Edit User</h3>
+    <input type="text" [(ngModel)]="editingUser!.name" placeholder="Name" required />
+    <input type="text" [(ngModel)]="editingUser!.address" placeholder="Address" required />
+    <input type="number" [(ngModel)]="editingUser!.phone" placeholder="Phone" required />
+    <button (click)="updateUser()" class="btn btn-success">Update</button>
+    <button (click)="cancelEdit()" class="btn btn-secondary">Cancel</button>
+</div>
+
